@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Yogesh Suhagiya
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future. If you wish to customize this module for your needs.
+ * Please contact Yogesh Suhagiya (yksuhagiya@gmail.com)
+ *
+ * @category    Practical
+ * @package     Practical_CloneProduct
+ * @author      Yogesh Suhagiya (yksuhagiya@gmail.com)
+ * @copyright   Copyright (c) 2022
+ * @license     https://github.com/yogeshsuhagiya/clone-product/blob/main/LICENSE
+ */
+ -->
+ <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Practical\CloneProduct\Api\Duplicate\ProductInterface" type="Practical\CloneProduct\Model\Duplicate\Product" />
+    <type name="Magento\Framework\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="clone_product_command" xsi:type="object">Practical\CloneProduct\Console\Command\Product</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Practical\CloneProduct\Logger\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">CloneProductErrorLogger</argument>
+            <argument name="handlers"  xsi:type="array">
+                <item name="error" xsi:type="object">Practical\CloneProduct\Logger\Handler\Error</item>
+                <item name="system" xsi:type="object">Practical\CloneProduct\Logger\Handler\System</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
